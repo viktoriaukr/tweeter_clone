@@ -68,7 +68,7 @@ def signup():
 
     form = UserAddForm()
 
-    if form.validate():
+    if form.validate_on_submit():
         try:
             user = User.signup(
                 username=form.username.data,
@@ -269,7 +269,7 @@ def messages_add():
 
     form = MessageForm()
 
-    if form.validate():
+    if form.validate_on_submit():
         msg = Message(text=form.text.data)
         g.user.messages.append(msg)
         db.session.commit()
